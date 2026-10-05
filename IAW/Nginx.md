@@ -135,7 +135,7 @@ Ahora le indicamos a Nginx **qué web mostrar según el puerto** utilizado.
 sudo tee /etc/nginx/sites-available/dominioa > /dev/null <<'EOF'
 server {
     listen 80;
-    server_name 172.16.5.20;
+    server_name 172.16.5.211;
 
     root /var/www/dominioa;
     index index.html;
@@ -156,7 +156,7 @@ EOF
 sudo tee /etc/nginx/sites-available/dominiob > /dev/null <<'EOF'
 server {
     listen 8080;
-    server_name 172.16.5.20;
+    server_name 172.16.5.211;
 
     root /var/www/dominiob;
     index index.html;
