@@ -1123,6 +1123,7 @@ rsync -avz -e "ssh -p 2222" carpeta/ antonio@172.16.5.210:ruta/   # sincronizar
 ```
 
 [⬆ Volver al índice](#índice)
+
 ---
 
 ## 14. Antes de conectarte en un entorno real
