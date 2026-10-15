@@ -38,6 +38,7 @@
 11. [Medidas de seguridad](#11-medidas-de-seguridad)
 12. [Diagnóstico de problemas](#12-diagnóstico-de-problemas)
 13. [Chuleta de comandos](#13-chuleta-de-comandos)
+14. [Antes de conectarte en un entorno real](#14-antes-de-conectarte-en-un-entorno-real)
 
 ---
 
@@ -1120,5 +1121,23 @@ scp -P 2222 archivo antonio@172.16.5.210:       # puerto personalizado (P MAYÚS
 sftp -P 2222 antonio@172.16.5.210               # sesión interactiva
 rsync -avz -e "ssh -p 2222" carpeta/ antonio@172.16.5.210:ruta/   # sincronizar
 ```
+
+[⬆ Volver al índice](#índice)
+---
+
+## 14. Antes de conectarte en un entorno real
+
+Si en una empresa te piden "conéctate por SSH al servidor", aclara esto **antes** de hacerlo:
+
+| # | Pregunta | Por qué importa |
+|---|---|---|
+| 1 | **¿Qué servidor exactamente?** (IP o nombre) | Conectarse a la máquina equivocada, sobre todo si es de producción, es un error clásico. |
+| 2 | **¿Con qué usuario?** | Lo normal es un usuario nominal propio, nunca `root` ni cuentas compartidas. |
+| 3 | **¿Cómo me autentico?** | Si es por clave, se envía la **clave pública**, nunca la privada. Si es por contraseña, que llegue por un canal seguro. |
+| 4 | **¿Qué puerto y cómo llego?** | Puede usar un puerto distinto del 22 o requerir VPN o un bastión (`ProxyJump`). |
+| 5 | **¿Cuál es la huella (fingerprint) del servidor?** | Para verificar la clave de host en la primera conexión y evitar un [Man-in-the-Middle](#6-el-ataque-man-in-the-middle). |
+| 6 | **¿Para qué entro y con qué permisos?** | Saber qué tarea hacer, si tendrás `sudo` y si hay horario o ventana para hacer cambios. |
+
+👉 **La más importante es la 6:** entrar sin saber qué puedes tocar es como se rompen cosas en producción.
 
 [⬆ Volver al índice](#índice)
